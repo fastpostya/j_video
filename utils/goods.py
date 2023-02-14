@@ -1,5 +1,6 @@
 class Goods():
-    pay_rate=1.0
+    pay_rate = 1.0
+
     def __init__(self, name="", price=0.0, quantity=0):
         self.name = name
         self.price = price

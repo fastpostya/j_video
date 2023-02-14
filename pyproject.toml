@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "j-video"
+version = "0.1.0"
+description = ""
+authors = ["fastpostya <fastpost@rambler.ru>"]
+readme = "README.md"
+packages = [{include = "j_video"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
