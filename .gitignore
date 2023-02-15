@@ -1,2 +1,6 @@
 utils/__pycache__/
+htmlcov/
+.pytest_cache/
+.coverage
+test/__pycache__/
 

@@ -12,7 +12,7 @@ class Goods():
         text = ""
         for dic in self.__dict__:
             text += dic + "=" + str(self.__dict__[dic]) + ", "
-        return text[:-2]
+        return f"Goods({text[:-2]})"
 
     def calculate_amount(self):
         return self.price * self.quantity
