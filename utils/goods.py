@@ -19,3 +19,4 @@ class Goods():
 
     def apply_discount(self):
         self.price = self.price * self.pay_rate
+        return self.price
