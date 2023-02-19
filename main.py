@@ -22,7 +22,7 @@ def main():
 
         print(item2.price)
         print(Goods.all)
-    item2.name = "СуперСмартфон"
+    item2.__name = "СуперСмартфон"
 
 
 

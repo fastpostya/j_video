@@ -7,10 +7,10 @@ class Goods():
 
     def __init__(self, __name="", price=0.0, quantity=0):
         """ инициализация экземпляра класса Goods. Праметры:
-        -name:str - имя,
+        -__name:str - имя, приватный атрибут,
         -price: float - цена,
         -quantity: int - количество"""
-        self.name = __name
+        self.__name = __name
         self.price = price
         self.quantity = quantity
         self.all.append(self)

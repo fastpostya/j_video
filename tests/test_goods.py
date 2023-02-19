@@ -4,7 +4,7 @@ from utils.goods import Goods
 
 
 def test__init__(mouse):
-    assert mouse.name == "мышь Tech"
+    assert mouse._Goods__name == "мышь Tech"
     assert mouse.price == 400
     assert mouse.quantity == 5
     with pytest.raises(NameError, match="Длина названия товара не должна превышать 10 символов!"):
@@ -28,7 +28,7 @@ def test_apply_discount(mouse):
 
 
 def test__repr__(mouse):
-    assert str(mouse) == "Goods(name=мышь Tech, price=400, quantity=5)"
+    assert str(mouse) == "Goods(_Goods__name=мышь Tech, price=400, quantity=5)"
 
 
 def test_is_integer():
