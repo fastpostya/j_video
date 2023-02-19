@@ -1,4 +1,5 @@
 import pytest
+import os
 from utils.goods import Goods
 
 
@@ -9,5 +10,9 @@ def mouse():
 
 @pytest.fixture()
 def keyboard():
-    keyboard = Goods("клавиатура Tech", 500, 0)
+    keyboard = Goods("клавиатура", 500, 0)
     return keyboard
+
+@pytest.fixture()
+def patf_csv_file():
+    return os.sep.join(["tests", "items.csv"])
