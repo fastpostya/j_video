@@ -14,15 +14,20 @@ class Goods():
         self.price = price
         self.quantity = quantity
         self.all.append(self)
-        if len(__name) > 10:
-            raise NameError("Длина названия товара не должна превышать 10 символов!")
+        if len(str(self._Goods__name)) > 10:
+            raise NameError("Длина названия товара не должна превышать 10 символов!", self._Goods__name)
 
     def __repr__(self) -> str:
         """ метод возвращает представление класса. Выводит все атрибуты объекта"""
-        text = ""
+        text = "Goods("
         for dic in self.__dict__:
-            text += dic + "=" + str(self.__dict__[dic]) + ", "
-        return f"Goods({text[:-2]})"
+            text += f'{dic}={self.__dict__[dic]}, '
+        return f"{text[:-2]})"
+
+    def __str__(self) -> str:
+        """ метод возвращает текст для печати, содержащий значения 
+        аттрибутов объектов класса Channel"""
+        return f"Товар: {self.__name}, цена: {self.price}, количество: {self.quantity}"       
 
     def calculate_amount(self):
         """метод возвращает общую стоимость всех товаров в экземпляре 
@@ -57,4 +62,3 @@ class Goods():
         имеет тип int, иначе - False"""
         return ((type(number) == int) or (type(number) == float)) \
             and (round(number) == number)
-

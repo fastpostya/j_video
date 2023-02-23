@@ -15,4 +15,6 @@ def keyboard():
 
 @pytest.fixture()
 def patf_csv_file():
-    return os.sep.join(["tests", "items.csv"])
+    return os.sep.join(["items.csv"])
+
+
