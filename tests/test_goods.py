@@ -1,6 +1,5 @@
 import pytest
-#import pytest_cov
-import utils
+import pytest_cov
 from utils.goods import Goods
 
 
@@ -27,9 +26,9 @@ def test_apply_discount(mouse):
     assert item1.price == 40
     assert int(item1.calculate_amount()) == 80
 
-
-def test__repr__(mouse):
-    assert repr(mouse) == "Goods(_Goods__name=мышь Tech, price=400, quantity=5)"
+def test__repr__():
+    assert repr(Goods("Ноутбук", 20000, 5)) == "Goods(_Goods__name=Ноутбук, price=20000, quantity=5)"
+    assert repr(Goods("Смартфон", 100, 1)) == "Goods(_Goods__name=Смартфон, price=100, quantity=1)"
 
 
 def test_is_integer():
@@ -45,6 +44,6 @@ def test_load_from_csv(patf_csv_file) -> list:
     assert len(item.load_from_csv(patf_csv_file)) == 5
     assert isinstance(item.load_from_csv(patf_csv_file)[0], Goods)
 
-def test__str__(self, goods, str_goods):
-    assert str(self) == str_goods
-
+def test__str__():
+    assert str(Goods("Ноутбук", 20000, 5)) == "Товар: Ноутбук, цена: 20000, количество: 5"
+    assert str(Goods("Смартфон", 100, 1)) == "Товар: Смартфон, цена: 100, количество: 1"
