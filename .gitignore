@@ -3,4 +3,6 @@ htmlcov/
 .pytest_cache/
 .coverage
 tests/__pycache__/
+.vscode/
+.env
 

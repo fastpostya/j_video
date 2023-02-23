@@ -1,5 +1,6 @@
 import pytest
-import pytest_cov
+#import pytest_cov
+import utils
 from utils.goods import Goods
 
 
@@ -43,3 +44,7 @@ def test_load_from_csv(patf_csv_file) -> list:
     item = Goods("name", 50, 2)
     assert len(item.load_from_csv(patf_csv_file)) == 5
     assert isinstance(item.load_from_csv(patf_csv_file)[0], Goods)
+
+def test__str__(self, goods, str_goods):
+    assert str(self) == str_goods
+

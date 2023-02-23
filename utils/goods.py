@@ -24,6 +24,11 @@ class Goods():
             text += dic + "=" + str(self.__dict__[dic]) + ", "
         return f"Goods({text[:-2]})"
 
+    def __str__(self) -> str:
+        """ метод возвращает текст для печати, содержащий значения 
+        аттрибутов объектов класса Channel"""
+        return f"Товар: {self.__name}, цена: {self.price}, количество: {self.quantity}"       
+
     def calculate_amount(self):
         """метод возвращает общую стоимость всех товаров в экземпляре 
         класса Goods, расчитанных исходя из их цены price 
