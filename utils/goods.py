@@ -62,4 +62,3 @@ class Goods():
         имеет тип int, иначе - False"""
         return ((type(number) == int) or (type(number) == float)) \
             and (round(number) == number)
-
