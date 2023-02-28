@@ -8,7 +8,7 @@ def test__init__(mouse):
     assert mouse.price == 400
     assert mouse.quantity == 5
     with pytest.raises(NameError, match="Длина названия товара не должна превышать 10 символов!"):
-        item = Goods("очень длинное имя", 1, 1 )
+        item = Goods("очень длинное имя", 1, 1)
 
 
 def test_calculate_amount(mouse, keyboard):
@@ -26,12 +26,15 @@ def test_apply_discount(mouse):
     assert item1.price == 40
     assert int(item1.calculate_amount()) == 80
 
+
 def test__repr__():
-    assert repr(Goods("Ноутбук", 20000, 5)) == "Goods(_Goods__name=Ноутбук, price=20000, quantity=5)"
-    assert repr(Goods("Смартфон", 100, 1)) == "Goods(_Goods__name=Смартфон, price=100, quantity=1)"
+    assert repr(Goods("Ноутбук", 20000, 5)) == \
+        "Goods(_Goods__name=Ноутбук, price=20000, quantity=5)"
+    assert repr(Goods("Смартфон", 100, 1)) == \
+        "Goods(_Goods__name=Смартфон, price=100, quantity=1)"
 
 
-def test_is_integer():
+def test_is_integer() -> bool:
     item = Goods("name", 50, 2)
     assert item.is_integer(5) is True
     assert item.is_integer(5.0) is True
@@ -43,7 +46,14 @@ def test_load_from_csv(patf_csv_file) -> list:
     item = Goods("name", 50, 2)
     assert len(item.load_from_csv(patf_csv_file)) == 5
     assert isinstance(item.load_from_csv(patf_csv_file)[0], Goods)
+    assert repr(item.load_from_csv(patf_csv_file)[0]) == "Goods(_Goods__name=Смартфон, price=100, quantity=1)"
+
 
 def test__str__():
-    assert str(Goods("Ноутбук", 20000, 5)) == "Товар: Ноутбук, цена: 20000, количество: 5"
-    assert str(Goods("Смартфон", 100, 1)) == "Товар: Смартфон, цена: 100, количество: 1"
+    assert str(Goods("Ноутбук", 20000, 5)) == \
+        "Товар: Ноутбук, цена: 20000, количество: 5"
+    assert str(Goods("Смартфон", 100, 1)) == \
+        "Товар: Смартфон, цена: 100, количество: 1"
+
+
+
