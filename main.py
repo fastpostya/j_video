@@ -37,6 +37,11 @@ def main():
         phone1.number_of_sim = 0
     except Exception as text:
         print(text)
+
+    try:
+        phone3 = Phone("gPhone 2", 5_000, 5, 0)
+    except Exception as text:
+        print(text)
     
     phone2 = Phone("mPhone 22", 30_000, 2, 1)
     print(phone1.add_item(phone1, phone2))
