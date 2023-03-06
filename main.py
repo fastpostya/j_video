@@ -40,8 +40,8 @@ def main():
     # print(phone1.add_item(phone1, phone2))
 
     # Задание 5
-    # kb = KeyBoard('Dark Project KD87A', 9600, 5)
-    kb = KeyBoard('Dark', 9600, 5)
+    kb = KeyBoard('Dark Project KD87A', 9600, 5)
+    # kb = KeyBoard('Dark', 9600, 5)
     print(kb)
     print(kb.language)
     kb.change_lang()
