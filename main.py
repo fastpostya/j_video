@@ -46,6 +46,8 @@ def main():
     print(kb.language)
     kb.change_lang()
     print(kb.language)
+    kb.change_lang()
+    print(kb.language)
     try:
         kb.language = 'CH'
     except AttributeError as error:
