@@ -42,7 +42,7 @@ class KeyBoard(Goods, Mixin):
     Любое другое значение вызывает исключение. Для него определен 
     геттер.
     Атрибуты, унаследованные от Goods:
-    -__name:str - имя, приватный атрибут,
+    -__name:str - имя, приватный атрибут. Определены геттер и сеттер.
     -price: float - цена,
     -quantity: int - количество
     Атрибуты, унаследованные от Mixin:
@@ -56,12 +56,29 @@ class KeyBoard(Goods, Mixin):
         и наоборот. Возвращает текущее значение раскладки.
         Попытка установить какое-либо другое значение, кроме 
         EN или RU вызывает исключение AttributeError.
+    - __repr__ - метод возвращает представление класса. 
+        Выводит все атрибуты объекта
+    - __str__ - метод возвращает текст для печати, содержащий значения 
+        аттрибутов объектов класса KeyBoard
     """
     def __init__(self, name="", price=0.0, quantity=0, language="EN") -> None:
         """инициализация класса"""
         super().__init__("", price, quantity)
         self._language = language
         self.name = name
+
+    @property
+    def name(self) -> str:
+        """Метод-геттер. Позволяет получить значение __name."""
+        return self.__name
+
+
+    @name.setter
+    def name(self, name: str) -> None:
+        """Метод-сеттер. Не  
+        выбрасывает исключение, если длина больше 10 символов."""
+        self.__name = name
+        return self.name
 
     def __repr__(self) -> str:
         """ метод возвращает представление класса. 
@@ -76,4 +93,3 @@ class KeyBoard(Goods, Mixin):
         аттрибутов объектов класса KeyBoard"""
         return f"Клавиатура: {self.name}, цена: {self.price}, " + \
             f"количество: {self.quantity}"       
-
