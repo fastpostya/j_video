@@ -37,3 +37,11 @@ def test_keyboard_change_lang():
     assert keyboard.language == "RU"
     keyboard.change_lang()
     assert keyboard.language == "EN"
+
+
+def test_keyboard__repr__(keyboard_test):
+    assert repr(keyboard_test) == "KeyBoard(_Goods__name="", price=1500, quantity=5, _language=EN, name=Tech)"
+
+
+def test_keyboard__str__(keyboard_test):
+    assert str(keyboard_test) == "Клавиатура: Tech, цена: 1500, количество: 5"

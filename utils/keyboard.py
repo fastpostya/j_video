@@ -5,7 +5,7 @@ class Mixin():
     """Класс Mixin для реализации атрибута __language
     и метода change_language для смены его значения.
     _language - защищенный атрибут (protected).
-    Для него определены геттер и сеттер.
+    Для него определен геттер.
 
     Методы:
     - change_lang - метод смены раскладки (значения language). 
@@ -35,19 +35,12 @@ class Mixin():
         """Метод-геттер. Позволяет получить значение _language."""
         return self._language
 
-    @language.setter
-    def language(self, language: str) -> None | Exception:
-        """Метод-сеттер. Не устанавливает новое значение, а 
-        выбрасывает исключение, если language не RU и не EN."""
-        if (language != 'RU') or (language != 'EN'):
-            raise AttributeError("property 'language' of 'KeyBoard' object has no setter")
-
 
 class KeyBoard(Goods, Mixin):
     """Класс KeyBoard- наследник класса Goods и миксина Mixin.
     Добавлен атрибут _language: str- принимающий значения EN или RU.
-    Любое другое значение вызывает исключение. Для него определены 
-    геттер и сеттер.
+    Любое другое значение вызывает исключение. Для него определен 
+    геттер.
     Атрибуты, унаследованные от Goods:
     -__name:str - имя, приватный атрибут,
     -price: float - цена,
@@ -66,5 +59,21 @@ class KeyBoard(Goods, Mixin):
     """
     def __init__(self, name="", price=0.0, quantity=0, language="EN") -> None:
         """инициализация класса"""
-        super().__init__(name, price, quantity)
+        super().__init__("", price, quantity)
         self._language = language
+        self.name = name
+
+    def __repr__(self) -> str:
+        """ метод возвращает представление класса. 
+        Выводит все атрибуты объекта"""
+        text = "KeyBoard("
+        for dic in self.__dict__:
+            text += f'{dic}={self.__dict__[dic]}, '
+        return f"{text[:-2]})"
+
+    def __str__(self) -> str:
+        """ метод возвращает текст для печати, содержащий значения 
+        аттрибутов объектов класса KeyBoard"""
+        return f"Клавиатура: {self.name}, цена: {self.price}, " + \
+            f"количество: {self.quantity}"       
+
