@@ -1,6 +1,7 @@
 import pytest
 import pytest_cov
 from utils.goods import Goods
+from utils.csverror import InstantiateCSVError
 
 
 def test__init__(mouse: Goods):
@@ -43,10 +44,23 @@ def test_is_integer() -> bool:
 
 
 def test_load_from_csv(patf_csv_file: str) -> list:
+    """файл существует, все столбцы присутствуют"""
     item = Goods("name", 50, 2)
     assert len(item.load_from_csv(patf_csv_file)) == 5
     assert isinstance(item.load_from_csv(patf_csv_file)[0], Goods)
     assert repr(item.load_from_csv(patf_csv_file)[0]) == "Goods(_Goods__name=Смартфон, price=100, quantity=1)"
+
+
+def test_load_from_csv_no_file(mouse: Goods):
+    """файл отсутствует по указанному пути"""
+    with pytest.raises(FileNotFoundError):
+        mouse.load_from_csv("")
+
+
+def test_load_from_csv_no_fieldnames(wrong_csv_file, mouse: Goods):
+    """файл существует, нет столбца"""
+    with pytest.raises(InstantiateCSVError):
+        mouse.load_from_csv(wrong_csv_file)
 
 
 def test__str__():

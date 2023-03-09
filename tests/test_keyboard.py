@@ -40,7 +40,8 @@ def test_keyboard_change_lang():
 
 
 def test_keyboard__repr__(keyboard_test):
-    assert repr(keyboard_test) == "KeyBoard(_Goods__name="", price=1500, quantity=5, _language=EN, name=Tech)"
+    assert repr(keyboard_test) == \
+        "KeyBoard(_Goods__name="", price=1500, quantity=5, _language=EN, _KeyBoard__name=Tech)"
 
 
 def test_keyboard__str__(keyboard_test):

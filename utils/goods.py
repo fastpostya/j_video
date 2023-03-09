@@ -1,4 +1,6 @@
 import csv
+import os
+from utils.csverror import InstantiateCSVError
 
 
 class Goods():
@@ -75,18 +77,24 @@ class Goods():
         Goods.
         Параметры:
         -path- путь к файлу."""
-        with open(path, "r", newline='') as csvfile:
-            csv_data = csv.DictReader(csvfile)
-            goods_list = []
-            for row in csv_data:
-                name = row['name']
-                price = int(row['price']) if float(row['price']).is_integer \
-                    else float(row['price'])
-                quantity = int(row['quantity']) if \
-                    float(row['quantity']).is_integer\
-                    else float(row['quantity'])
-                goods_list.append(cls(name, price, quantity))
-            return goods_list
+        if os.path.exists(path) and os.path.isfile(path):
+            with open(path, "r", newline='') as csvfile:
+                csv_data = csv.DictReader(csvfile)
+                if not (("name" in csv_data.fieldnames) and ("price" in csv_data.fieldnames) and ("quantity" in csv_data.fieldnames)):
+                    raise InstantiateCSVError(f"Файл {path} поврежден")
+                else:
+                    goods_list = []
+                    for row in csv_data:
+                        name = row['name']
+                        price = int(row['price']) if float(row['price']).is_integer \
+                            else float(row['price'])
+                        quantity = int(row['quantity']) if \
+                            float(row['quantity']).is_integer\
+                            else float(row['quantity'])
+                        goods_list.append(cls(name, price, quantity))
+                    return goods_list
+        else:
+            raise FileNotFoundError(f"Отсутствует файл {path}")
 
     @staticmethod
     def is_integer(number) -> bool:
